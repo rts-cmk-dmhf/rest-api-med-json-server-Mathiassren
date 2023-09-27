@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function AddProduct() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [weight, setWeight] = useState('');
   const [description, setDescription] = useState('');
+  const [products, setProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  useEffect(() => {
+    // Fetch the list of products when the component mounts
+    fetch('/products')
+      .then(response => response.json())
+      .then(data => setProducts(data));
+  }, []);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -32,8 +41,38 @@ function AddProduct() {
         setPrice('');
         setWeight('');
         setDescription('');
+
+        // Update the product list by fetching the updated list
+        fetch('/products')
+          .then(response => response.json())
+          .then(updatedData => setProducts(updatedData));
       });
   };
+
+  // Function to handle product deletion
+  const handleDeleteProduct = productId => {
+    fetch(`/products/${productId}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          // If the deletion was successful, update the product list
+          const updatedProducts = products.filter(product => product.id !== productId);
+          setProducts(updatedProducts);
+        } else {
+          // Handle errors if necessary
+          console.error('Failed to delete product');
+        }
+      })
+      .catch(error => {
+        console.error('Error deleting product:', error);
+      });
+  };
+
+  // Function to filter products based on the search term
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
@@ -53,6 +92,23 @@ function AddProduct() {
         <br />
         <button type="submit">Add Product</button>
       </form>
+
+      <h2>Product List</h2>
+      {/* Search input */}
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={searchTerm}
+        onChange={e => setSearchTerm(e.target.value)}
+      />
+      <ul>
+        {filteredProducts.map(product => (
+          <li key={product.id}>
+            <strong>{product.name}</strong> - Price: ${product.price} - Weight: {product.weight}
+            <button onClick={() => handleDeleteProduct(product.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

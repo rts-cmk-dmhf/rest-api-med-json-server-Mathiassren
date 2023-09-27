@@ -1,34 +1,60 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "Product 1",
-        "price": 19.99,
-        "weight": "250g",
-        "description": "A description for Product 1"
-      },
-      {
-        "id": 2,
-        "name": "Product 2",
-        "price": 29.99,
-        "weight": "500g",
-        "description": "A description for Product 2"
-      },
-      {
-        "id": 3,
-        "name": "Product 3",
-        "price": 14.99,
-        "weight": "200g",
-        "description": "A description for Product 3"
-      },
-      {
-        "id": 4,
-        "name": "Product 4",
-        "price": 24.99,
-        "weight": "350g",
-        "description": "A description for Product 4"
-      }
-
-    ]
-  }
-  
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 19.99,
+      "weight": "250g",
+      "description": "A description for Product 1"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 29.99,
+      "weight": "500g",
+      "description": "A description for Product 2"
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "price": 14.99,
+      "weight": "200g",
+      "description": "A description for Product 3"
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "price": 24.99,
+      "weight": "350g",
+      "description": "A description for Product 4"
+    },
+    {
+      "name": "Product 1",
+      "price": 20,
+      "weight": "50",
+      "description": "qwe",
+      "id": 5
+    },
+    {
+      "name": "4444",
+      "price": 123,
+      "weight": "123",
+      "description": "123312",
+      "id": 6
+    },
+    {
+      "name": "231231321",
+      "price": 321321312,
+      "weight": "12331231",
+      "description": "132231312",
+      "id": 7
+    },
+    {
+      "name": "Sodavand",
+      "price": 20,
+      "weight": "5",
+      "description": "Blå sodavand\n",
+      "id": 8
+    }
+  ]
+}

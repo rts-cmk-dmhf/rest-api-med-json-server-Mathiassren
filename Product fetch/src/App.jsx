@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductList from '../src/components/ProductList';
 import AddProduct from '../src/components/AddProduct';
-import "./"
+
 
 function App() {
   return (
